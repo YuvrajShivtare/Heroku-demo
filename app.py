@@ -16,7 +16,9 @@ def predict():
     '''
     int_features = [x for x in request.form.values()]
     final_features = [np.array(int_features,dtype='float64')]
+    target_names = ['setosa', 'versicolor', 'virginica']
     output = model.predict(final_features)
+    output = target_names[output[0]]
     return render_template('index.html', prediction_text='Iris flower is: {}'.format(output))
 
 
